@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import tw from 'tailwind.macro'
+import { colors } from '../../tailwind'
 import { Parallax } from 'react-spring/renderprops-addons.cjs'
 
 // Components
@@ -18,6 +19,7 @@ import About from '../views/About'
 import Contact from '../views/Contact'
 
 import avatar from '../images/avatar.jpg'
+import profile from '../images/profile.png'
 
 const ProjectsWrapper = styled.div`
   ${tw`flex flex-wrap justify-between mt-8`};
@@ -42,15 +44,34 @@ const Avatar = styled.img`
 `
 
 const AboutSub = styled.span`
-  ${tw`text-white pt-12 lg:pt-0 lg:pl-12 text-2xl lg:text-3xl xl:text-4xl`};
+  ${tw`text-white font-serif pt-12 lg:pt-0 lg:pl-12 text-xl lg:text-2xl xl:text-3xl`};
 `
 
-const AboutDesc = styled.p`
-  ${tw`text-grey-light text-lg md:text-xl lg:text-2xl font-sans pt-6 md:pt-12 text-justify`};
+const AboutDesc = styled.div`
+  ${tw`text-grey-light text-lg md:text-xl lg:text-2xl font-sans pt-3 md:pt-6 text-justify`};
+`
+
+const AboutSkill = styled.div`
+  ${tw`flex my-8`};
+`
+
+const AboutSkillName = styled.div`
+  ${tw`w-1/6 h-12`};
+`
+
+const AboutSkillBar = styled.div`
+  ${props => 
+    props.level == 5 ? tw`w-5/6 h-10 rounded-lg`
+    : props.level == 4 ? tw`w-2/3 h-10 rounded-lg`
+    : props.level == 3 ? tw`w-1/2 h-10 rounded-lg`
+    : props.level == 2 ? tw`w-1/3 h-10 rounded-lg`
+    : tw`w-1/6 h-10 rounded-lg`
+  }
+  background: ${props => props.bg};
 `
 
 const ContactText = styled.p`
-  ${tw`text-grey-light font-sans text-xl md:text-2xl lg:text-3xl`};
+  ${tw`text-grey-light font-sans text-lg md:text-xl lg:text-2xl`};
 `
 
 const Footer = styled.footer`
@@ -63,73 +84,88 @@ const Index = () => (
     <Parallax pages={5}>
       <Hero offset={0}>
         <BigTitle>
-          Hello, <br /> I'm John Doe.
+          Hello,<br /> I'm Jinwoong Joung.
         </BigTitle>
-        <Subtitle>I'm creating noice web experiences for the next generation of consumer-facing companies.</Subtitle>
+        <Subtitle>
+        I'm an enthusiastic software engineer with strong team oriented character seeking innovative solutions to solve business problems
+        </Subtitle>
       </Hero>
       <Projects offset={1}>
         <Title>Projects</Title>
         <ProjectsWrapper>
           <ProjectCard
-            title="Freiheit"
-            link="https://www.behance.net/gallery/58937147/Freiheit"
+            title="KAPCQ"
+            link="https://quirky-hamilton-7bff02.netlify.com/"
             bg="linear-gradient(to right, #D4145A 0%, #FBB03B 100%)"
           >
-            This project is my entry to Adobe's #ChallengeYourPerspective contest.
+            Responsive Church Website built with Gatsby & Netlify CMS
           </ProjectCard>
           <ProjectCard
-            title="Harry Potter"
-            link="https://www.behance.net/gallery/52915793/Harry-Potter"
-            bg="linear-gradient(to right, #662D8C 0%, #ED1E79 100%)"
-          >
-            I entered the DOCMA 2017 award with this Harry Potter inspired image.
-          </ProjectCard>
-          <ProjectCard
-            title="Tomb Raider"
-            link="https://www.behance.net/gallery/43907099/Tomb-Raider"
-            bg="linear-gradient(to right, #009245 0%, #FCEE21 100%)"
-          >
-            Recreation of a Tomb Raider Wallpaper (Fan Art)
-          </ProjectCard>
-          <ProjectCard
-            title="Eagle"
-            link="https://www.behance.net/gallery/38068151/Eagle"
+            title="KAPCQ BOX"
+            link="https://kapcqbox.org"
             bg="linear-gradient(to right, #D585FF 0%, #00FFEE 100%)"
           >
-            A fantasy image manipulation relocating the habitat of wild animals.
+            Attendance Management System for church members using Angular & Firebase
+          </ProjectCard>
+          <ProjectCard
+            title="RETHINK FIRST"
+            link="https://www.rethinkbehavioralhealth.com/"
+            bg="linear-gradient(to right, #009245 0%, #FCEE21 100%)"
+          >
+            Healthcare platform that provides clinical tools, training and practice management solutions focused on behavioral health
           </ProjectCard>
         </ProjectsWrapper>
       </Projects>
       <About offset={3}>
         <Title>About</Title>
         <AboutHero>
-          <Avatar src={avatar} alt="John Doe" />
+          <Avatar src={profile} alt="Jinwoong Joung" />
           <AboutSub>
-            The English language can not fully capture the depth and complexity of my thoughts. So I'm incorporating
-            Emoji into my speech to better express myself. Winky face.
+            Currently I work as a full stack developer for Rethink Fisrt in New York, NY. <br/>
+            I have strong passion for developing simple and intuitive web applications for users by using cutting edge technologies.   
           </AboutSub>
         </AboutHero>
         <AboutDesc>
-          You know the way you feel when you see a picture of two otters holding hands? That's how you're gonna feel
-          every day. My mother cried the day I was born because she knew she’d never be prettier than me. You should
-          make me your campaign manager. I was born for politics. I have great hair and I love lying. Captain? The kids
-          want to know where Paulie the Pigeon is. I told them he got sucked up into an airplane engine, is that all
-          right?
+          <AboutSkill>
+            <AboutSkillName>Angular</AboutSkillName>
+            <AboutSkillBar bg="linear-gradient(to right, #C02425 0%, #F0CB35 100%)" level="4"></AboutSkillBar>
+          </AboutSkill>
+          <AboutSkill>
+            <AboutSkillName>React</AboutSkillName>
+            <AboutSkillBar bg="linear-gradient(to right, #1c92d2 0%, #f2fcfe 100%)" level="3"></AboutSkillBar>
+          </AboutSkill>
+          <AboutSkill>
+            <AboutSkillName>JavaScript</AboutSkillName>
+            <AboutSkillBar bg="linear-gradient(to right, #FFE000 0%, #799F0C 100%)" level="4"></AboutSkillBar>
+          </AboutSkill>
+          <AboutSkill>
+            <AboutSkillName>TypeScript</AboutSkillName>
+            <AboutSkillBar bg="linear-gradient(to right, #2980b9 0%, #2c3e50 100%)" level="3"></AboutSkillBar>
+          </AboutSkill>
+          <AboutSkill>
+            <AboutSkillName>C#</AboutSkillName>
+            <AboutSkillBar bg="linear-gradient(to right, #8E2DE2 0%, #4A00E0 100%)" level="4"></AboutSkillBar>
+          </AboutSkill>
+          <AboutSkill>
+            <AboutSkillName>Java</AboutSkillName>
+            <AboutSkillBar bg="linear-gradient(to right, #b92b27 0%, #1565C0 100%)" level="3"></AboutSkillBar>
+          </AboutSkill>
+          <AboutSkill>
+            <AboutSkillName>Python</AboutSkillName>
+            <AboutSkillBar bg="linear-gradient(to right, #4DA0B0 0%, #D39D38 100%)" level="2"></AboutSkillBar>
+          </AboutSkill>
         </AboutDesc>
       </About>
       <Contact offset={4}>
         <Inner>
           <Title>Get in touch</Title>
           <ContactText>
-            Say <a href="mailto:plizNoSp4m@domain.tld">Hi</a> or find me on other platforms:{' '}
-            <a href="https://dribbble.com/LekoArts">Dribbble</a> &{' '}
-            <a href="https://www.instagram.com/lekoarts.de/">Instagram</a>
+            Say <a href="mailto:jinwoong.joung@gmail.com">Hi</a> or find me at:{' '}
+            <a href="https://www.linkedin.com/in/jinwoongjoung/" target="_blank">LinkedIn</a>
           </ContactText>
         </Inner>
         <Footer>
-          &copy; 2019 by Gatsby Starter Portfolio Cara.{' '}
-          <a href="https://github.com/LekoArts/gatsby-starter-portfolio-cara">Github Repository</a>. Made by{' '}
-          <a href="https://www.lekoarts.de">LekoArts</a>.
+        <a href="https://github.com/jjoung1128" target="_blank">Jinwoong Joung</a> &copy; 2019
         </Footer>
       </Contact>
     </Parallax>
