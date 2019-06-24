@@ -56,16 +56,16 @@ const AboutSkill = styled.div`
 `
 
 const AboutSkillName = styled.div`
-  ${tw`w-1/6 h-12`};
+  ${tw`w-1/4 h-12 text-sm text-center sm:w-1/6 sm:text-lg`};
 `
 
 const AboutSkillBar = styled.div`
   ${props => 
-    props.level == 5 ? tw`w-5/6 h-10 rounded-lg`
-    : props.level == 4 ? tw`w-2/3 h-10 rounded-lg`
-    : props.level == 3 ? tw`w-1/2 h-10 rounded-lg`
-    : props.level == 2 ? tw`w-1/3 h-10 rounded-lg`
-    : tw`w-1/6 h-10 rounded-lg`
+    props.level == 5 ? tw`w-5/6 h-8 rounded-lg`
+    : props.level == 4 ? tw`w-2/3 h-8 rounded-lg`
+    : props.level == 3 ? tw`w-1/2 h-8 rounded-lg`
+    : props.level == 2 ? tw`w-1/3 h-8 rounded-lg`
+    : tw`w-1/6 h-8 rounded-lg`
   }
   background: ${props => props.bg};
 `
